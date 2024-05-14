@@ -1,0 +1,9 @@
+<div >
+    <div #wave class="bg-purple-400"></div>
+    <button (click)="playPause()" >
+    @if(isPlaying()){
+        <span class="text-2xl">Pausa</span>
+    }@else {
+        <span>Play</span>
+    }</button>
+</div>
