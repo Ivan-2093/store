@@ -5,9 +5,9 @@ import { HeaderComponent } from './domains/shared/components/header/header.compo
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,RouterOutlet,HeaderComponent],
+  imports: [CommonModule,RouterOutlet],
   /* templateUrl: './app.component.html', */
-  template: '<app-header/><router-outlet/>',
+  template: '<router-outlet/>',
   /* styleUrl: './app.component.css' */
 })
 export class AppComponent {
