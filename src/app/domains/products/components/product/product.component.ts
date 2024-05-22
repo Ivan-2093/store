@@ -20,8 +20,7 @@ export class ProductComponent {
 
   addToCartHandler()
   {
-    console.log('Clicked from son');
-    this.addToCart.emit(this.product.title + ' ha sido seleccionado!');
+    this.addToCart.emit(this.product);
   }
 
 }

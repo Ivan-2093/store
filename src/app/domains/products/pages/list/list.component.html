@@ -2,7 +2,7 @@
     <app-header/>
     <div class="grid grid-cols-3 mt-5 gap-2">
         @for (product of products(); track $index){
-        <app-product [product]="product" (addToCart)="fromChild($event)" />
+        <app-product [product]="product" (addToCart)="addToCart($event)" />
         }
     </div>
 </div>

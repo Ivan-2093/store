@@ -1,10 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 import { ProductComponent } from './../../components/product/product.component';
 import { Product } from '../../../shared/models/product.model';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
+import { CartService } from '../../../shared/services/cart.service';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
 export class ListComponent {
 
   products = signal<Product[]>([]);
+  private cartService = inject(CartService)
 
   constructor() {
     const initProducts: Product[] = [
@@ -47,8 +49,7 @@ export class ListComponent {
 
   }
 
-  fromChild(event: String) {
-    console.log('This is father!');
-    console.log(event);
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
   }
 }
