@@ -6,6 +6,7 @@ import { ProductComponent } from './../../components/product/product.component';
 import { Product } from '../../../shared/models/product.model';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { CartService } from '../../../shared/services/cart.service';
+import { ProductService } from '../../../shared/services/product.service';
 
 
 @Component({
@@ -19,36 +20,21 @@ export class ListComponent {
 
   products = signal<Product[]>([]);
   private cartService = inject(CartService)
+  private productService = inject(ProductService)
 
-  constructor() {
-    const initProducts: Product[] = [
-      {
-        id: Date.now(),
-        title: 'Producto 1',
-        price: 10000,
-        image: 'https://picsum.photos/320/320?r=1',
-        creationDate: new Date().toISOString()
+  ngOnInit() {
+    this.productService.getProducts()
+    .subscribe({
+      next: (products) => {
+        this.products.set(products);
       },
-      {
-        id: Date.now(),
-        title: 'Producto 2',
-        price: 20000,
-        image: 'https://picsum.photos/320/320?r=2',
-        creationDate: new Date().toISOString()
-      },
-      {
-        id: Date.now(),
-        title: 'Producto 3',
-        price: 30000,
-        image: 'https://picsum.photos/320/320?r=3',
-        creationDate: new Date().toISOString()
-      },
-    ]
-
-    this.products.set(initProducts);
-
+      error: () => {
+        console.error('Error API');
+      } 
+    });
   }
 
+ 
   addToCart(product: Product) {
     this.cartService.addToCart(product);
   }

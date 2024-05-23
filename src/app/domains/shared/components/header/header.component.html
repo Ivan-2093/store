@@ -10,7 +10,7 @@
           <a href="#" class="block underline hover:underline" aria-current="page">Home</a>
         </li>
         <li>
-          <a href="#" class="block hover:underline">About</a>
+          <a href="about" class="block hover:underline">About</a>
         </li>
         <li>
           <a href="#" class="block hover:underline">Services</a>
@@ -46,7 +46,7 @@
     @for (product of cart() ; track $index) {
     <div class="flex justify-between items-center space-y-2">
       <div class="flex space-x-2 items-center">
-        <img class="w-6 h-6" [src]="product.image" [alt]="product.title">
+        <img class="w-6 h-6" [src]='product.images[0].replace("/\[|\]|/g","")' [alt]="product.title">
         <h3>{{ product.title }}</h3>
       </div>
       <p>{{ product.price.toLocaleString('CO') }}</p>
