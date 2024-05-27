@@ -1,9 +1,9 @@
 export interface Product {
     id: number,
-    title: String,
+    title: string,
     price: number,
     images: string[],
-    creationDate: String,
+    updatedAt: string,
 }
 /* 
 [
