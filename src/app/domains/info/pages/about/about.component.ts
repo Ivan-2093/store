@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CounterComponent } from '../../../shared/components/counter/counter.component'
-import { CommonModule, NgIf } from '@angular/common';
+
 import { WaveAudioComponent } from '../../components/wave-audio/wave-audio.component';
 import { HighlegthDirective } from '@shared/directives/highlegth.directive';
 import { HeaderComponent } from '@shared/components/header/header.component';
@@ -8,7 +8,7 @@ import { HeaderComponent } from '@shared/components/header/header.component';
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule,CounterComponent,WaveAudioComponent,HighlegthDirective,NgIf,HeaderComponent],
+  imports: [CounterComponent, WaveAudioComponent, HighlegthDirective, HeaderComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
