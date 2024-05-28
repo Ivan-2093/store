@@ -11,21 +11,42 @@ export class ProductService {
 
   private http = inject(HttpClient)
 
+
   constructor() { }
-  getProducts() {
-    return this.http.get<Product[]>('https://api.escuelajs.co/api/v1/products').pipe(
+  getProducts(category_id?: string) {
+
+    const url = new URL(`https://api.escuelajs.co/api/v1/products`);
+    if (category_id) {
+      url.searchParams.set('categoryId', category_id);
+    }
+
+    return this.http.get<Product[]>(url.toString()).pipe(
       map(products =>
         products.map(product => ({
           ...product,
           images: product.images.map(image =>
-            this.cleanAndParseImageUrl(image)
+            this.cleanAndParseImageUrl(image),
           )
         }))
       )
     );
   }
 
-  private cleanAndParseImageUrl(image: string): string {
+  getProductId(id_product: string) {
+    return this.http.get<Product>(`https://api.escuelajs.co/api/v1/products/${id_product}`).pipe(
+      /* map(products =>
+        products.map(product => ({
+          ...product,
+          images: product.images.map(image =>
+            this.cleanAndParseImageUrl(image),
+          )
+        }))
+      ) */
+    );
+  }
+
+
+  cleanAndParseImageUrl(image: string): string {
     let cleanedImage = image.replace(/^\["?|"?]$/g, '');
     try {
       cleanedImage = JSON.parse(cleanedImage);

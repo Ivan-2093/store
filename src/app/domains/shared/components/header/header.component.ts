@@ -1,13 +1,19 @@
 import { Component, Input, SimpleChanges, inject, signal } from '@angular/core';
-import { Product } from '../../models/product.model';
 import { CartService } from '../../services/cart.service';
 import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 import { ReversePipe } from '@shared/pipes/reverse.pipe';
+import { RouterLinkWithHref, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CurrencyPipe, DatePipe, UpperCasePipe, ReversePipe],
+  imports: [
+    CurrencyPipe,
+    DatePipe,
+    UpperCasePipe,
+    ReversePipe,
+    RouterLinkWithHref,
+    RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

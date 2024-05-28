@@ -3,15 +3,16 @@ import { CounterComponent } from '../../../shared/components/counter/counter.com
 import { CommonModule, NgIf } from '@angular/common';
 import { WaveAudioComponent } from '../../components/wave-audio/wave-audio.component';
 import { HighlegthDirective } from '@shared/directives/highlegth.directive';
+import { HeaderComponent } from '@shared/components/header/header.component';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule,CounterComponent,WaveAudioComponent,HighlegthDirective,NgIf],
+  imports: [CommonModule,CounterComponent,WaveAudioComponent,HighlegthDirective,NgIf,HeaderComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
-export class AboutComponent {
+export default class AboutComponent {
   duration = signal(1000);
   message = signal('Hola');
 
